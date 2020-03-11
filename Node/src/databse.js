@@ -52,3 +52,19 @@ function login(email, pass) {
     });
 }
 exports.login = login;
+function signUp(email, pass, name, phone) {
+    return __awaiter(this, void 0, void 0, function () {
+        var user;
+        return __generator(this, function (_a) {
+            user = new User({
+                name: name,
+                phone: phone,
+                email: email,
+                password: pass
+            });
+            user.save();
+            return [2 /*return*/];
+        });
+    });
+}
+exports.signUp = signUp;

@@ -48,18 +48,44 @@ exports.router.post('/login', function (request, response) { return __awaiter(vo
                 pass = request.query.password;
                 console.log(email, pass);
                 return [4 /*yield*/, handlers.login(email, pass).then(function (res) {
-                        response.json({
+                        response.status(200).json({
                             success: true,
                             response: res
                         });
                     })["catch"](function (err) {
-                        response.json({
+                        response.status(500).json({
                             success: false,
-                            response: res
+                            response: err
                         });
                     })];
             case 1:
                 res = _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.router.post('/signUp', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var email, pass, name, phone;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                email = request.query.email;
+                pass = request.query.password;
+                name = request.query.name;
+                phone = request.query.phone;
+                return [4 /*yield*/, handlers.signUp(email, pass, name, phone).then(function (data) {
+                        response.status(200).json({
+                            success: true,
+                            response: data
+                        });
+                    })["catch"](function (err) {
+                        response.status(500).json({
+                            success: false,
+                            response: err
+                        });
+                    })];
+            case 1:
+                _a.sent();
                 return [2 /*return*/];
         }
     });
