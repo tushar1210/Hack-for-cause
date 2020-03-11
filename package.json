@@ -2,9 +2,11 @@
   "name": "h4c",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc Node/src/app.ts ",
+    "run":"node Node/src/app.js"
   },
   "author": "Tushar Singh",
   "license": "ISC",
