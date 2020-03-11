@@ -1,0 +1,19 @@
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var app = express();
+var mongoose = require("mongoose");
+var PORT = process.env.PORT || 50;
+var user = require("./users");
+var conn = "mongodb+srv://Tushar:idbi1234@cluster0-pqne8.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(conn, { useNewUrlParser: true, useUnifiedTopology: true }, function () {
+    console.log('\nAtlas Conected!');
+});
+mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
+// mongoose.Promise = global.Promise ;
+app.use('', user.router);
+app.listen(PORT, function () {
+    console.log('Listening to ' + PORT);
+});
+exports["default"] = mongoose;
