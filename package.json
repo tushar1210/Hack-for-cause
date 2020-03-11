@@ -2,16 +2,23 @@
   "name": "h4c",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc Node/src/app.ts ",
+    "start": "node Node/src/app.js"
   },
   "author": "Tushar Singh",
   "license": "ISC",
   "dependencies": {
     "@types/mongoose": "^5.7.6",
     "@types/node": "^13.9.0",
-    "bluebird": "^3.7.2"
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.4",
+    "nodemon": "^2.0.1",
+    "ts-node": "^8.5.3",
+    "typescript": "^3.7.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.3"
