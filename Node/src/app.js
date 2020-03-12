@@ -5,6 +5,7 @@ var app = express();
 var mongoose = require("mongoose");
 var PORT = process.env.PORT || 50;
 var user = require("./users");
+var bodyParser = require("body-parser");
 var conn = "mongodb+srv://Tushar:idbi1234@cluster0-pqne8.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(conn, { useNewUrlParser: true, useUnifiedTopology: true }, function () {
     console.log('\nAtlas Conected!');
@@ -12,6 +13,8 @@ mongoose.connect(conn, { useNewUrlParser: true, useUnifiedTopology: true }, func
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 // mongoose.Promise = global.Promise ;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('', user.router);
 app.listen(PORT, function () {
     console.log('Listening to ' + PORT);

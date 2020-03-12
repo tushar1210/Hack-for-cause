@@ -38,14 +38,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var express = require("express");
 var handlers = require("./databse");
+var bodyParser = require("body-parser");
 exports.router = express.Router();
-exports.router.post('/login', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var jsonParser = bodyParser.json();
+exports.router.post('/login', jsonParser, function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var email, pass, res;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                email = request.query.email;
-                pass = request.query.password;
+                email = request.body.email;
+                pass = request.body.password;
                 console.log(email, pass);
                 return [4 /*yield*/, handlers.login(email, pass).then(function (res) {
                         response.status(200).json({
