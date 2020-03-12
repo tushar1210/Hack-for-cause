@@ -67,15 +67,15 @@ exports.router.post('/login', jsonParser, function (request, response) { return 
         }
     });
 }); });
-exports.router.post('/signUp', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+exports.router.post('/signUp', jsonParser, function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var email, pass, name, phone;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                email = request.query.email;
-                pass = request.query.password;
-                name = request.query.name;
-                phone = request.query.phone;
+                email = request.body.email;
+                pass = request.body.password;
+                name = request.body.name;
+                phone = request.body.phone;
                 return [4 /*yield*/, handlers.signUp(email, pass, name, phone).then(function (data) {
                         response.status(200).json({
                             success: true,

@@ -40,12 +40,25 @@ var model = require("./models");
 var User = model.User;
 function login(email, pass) {
     return __awaiter(this, void 0, void 0, function () {
-        var res;
+        var res, rs, rees;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, User.findOne({ email: email, password: pass })];
                 case 1:
                     res = _a.sent();
+                    if (res == null) {
+                        rs = {
+                            userFound: false
+                        };
+                        return [2 /*return*/, rs];
+                    }
+                    else {
+                        rees = {
+                            userFound: true,
+                            data: res
+                        };
+                        return [2 /*return*/, rees];
+                    }
                     return [2 /*return*/, res];
             }
         });
