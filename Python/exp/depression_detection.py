@@ -10,7 +10,7 @@ import shutil
 import os
 import random
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '13'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '0'
 
 
 # Global config, please don't modify
@@ -230,7 +230,7 @@ FP = result["false_positives"]
 
 
 acc = (TN + TP) / (TN + FN + TP + FP)
-print ("Accuracy",acc)
+print ("\n\nAccuracy",acc)
 
 
 pr_pos = TP / (TP + FP)
