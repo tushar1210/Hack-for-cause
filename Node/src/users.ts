@@ -2,12 +2,15 @@
 import express = require('express');
 import handlers = require('./databse');
 import mongoose = require('./app');
-
+import bodyParser = require('body-parser')
 export const router = express.Router();
 
-router.post('/login',async(request,response)=>{
-    var email=request.query.email;
-    var pass = request.query.password;
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var jsonParser = bodyParser.json()
+
+router.post('/login',jsonParser,async(request,response)=>{
+    var email=request.body.email;
+    var pass = request.body.password;
     console.log(email,pass);
 
     var res = await handlers.login(email,pass).then((res)=>{
