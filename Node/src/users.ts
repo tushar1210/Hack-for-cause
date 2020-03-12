@@ -27,11 +27,11 @@ router.post('/login',jsonParser,async(request,response)=>{
     });
 });
 
-router.post('/signUp',async(request,response)=>{
-    var email=request.query.email;
-    var pass = request.query.password;
-    var name = request.query.name;
-    var phone = request.query.phone ;
+router.post('/signUp',jsonParser,async(request,response)=>{
+    var email=request.body.email;
+    var pass = request.body.password;
+    var name = request.body.name;
+    var phone = request.body.phone ;
     await handlers.signUp(email,pass,name,phone).then((data)=>{
         response.status(200).json({
             success:true,
